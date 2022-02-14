@@ -1,16 +1,29 @@
-# e_shoppie_app
+![App](https://user-images.githubusercontent.com/62621180/153781463-e0f4722c-a53e-40ec-a14e-a0004e48be39.png)
+# eShoppie (A Flutter Shopping App)
 
-A new Flutter project.
+##  App built with:
 
-## Getting Started
+###   Flutter Framework
+###   Dart Programming Language
+###   VS Code IDE
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+##  App dependencies:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+###  google_fonts: ^2.1.0
+### smooth_page_indicator: ^1.0.0+2
+### page_transition: ^2.0.4
+### intl_phone_field: ^2.1.0
+### phone_form_field: ^4.3.1
+### email_validator: ^2.0.1
+### password_strength: ^0.2.0
+### dio: ^4.0.3
+### flutter_bloc: ^7.3.1
+### bloc: ^7.2.1
+### conditional_builder_null_safety: ^0.0.6
+### ionicons: ^0.1.2
+### lottie: ^1.2.1
+### animate_do: ^2.0.0
+### shared_preferences: ^2.0.9
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Thank you :)
