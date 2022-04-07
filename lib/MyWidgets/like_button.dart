@@ -1,10 +1,11 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:eShoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
-import 'package:eShoppie/AppCubits/UserHomeCubit/user_home_states.dart';
-import 'package:eShoppie/MyWidgets/snack_bar.dart';
-import 'package:eShoppie/Screens/UserHomeScreens/user_home_content.dart';
-import 'package:eShoppie/Shared/shared_preference.dart';
-import 'package:eShoppie/constants.dart';
+import 'package:eshoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
+import 'package:eshoppie/AppCubits/UserHomeCubit/user_home_states.dart';
+import 'package:eshoppie/MyWidgets/snack_bar.dart';
+import 'package:eshoppie/Screens/UserHomeScreens/user_home_content.dart';
+import 'package:eshoppie/Shared/functions.dart';
+import 'package:eshoppie/Shared/shared_preference.dart';
+import 'package:eshoppie/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -45,6 +46,12 @@ class LikeButton extends StatelessWidget {
 
               userHomeCubit.addToFavorites(
                   products[productIndex].id); //Add new value to the server
+
+              if (products[productIndex].inFavorites) {
+                showToastMessage('Product added to your favorites');
+              } else {
+                showToastMessage('Product removed from your favorites');
+              }
             },
             icon: Icon(
               products[productIndex].inFavorites

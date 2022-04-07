@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/src/response.dart';
-import 'package:eShoppie/AppCubits/LoginScreenCubit/login_states.dart';
-import 'package:eShoppie/Models/user.dart';
-import 'package:eShoppie/Shared/shared_preference.dart';
-import 'package:eShoppie/api_handler.dart';
-import 'package:eShoppie/main.dart';
+import 'package:eshoppie/AppCubits/LoginScreenCubit/login_states.dart';
+import 'package:eshoppie/Models/user.dart';
+import 'package:eshoppie/Shared/shared_preference.dart';
+import 'package:eshoppie/api_handler.dart';
+import 'package:eshoppie/main.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 User? currentUserData;

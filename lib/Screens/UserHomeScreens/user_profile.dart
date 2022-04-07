@@ -1,20 +1,21 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:eShoppie/AppCubits/LoginScreenCubit/login_cubit.dart';
-import 'package:eShoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
-import 'package:eShoppie/AppCubits/UserHomeCubit/user_home_states.dart';
-import 'package:eShoppie/MyWidgets/fade_in_image.dart';
-import 'package:eShoppie/MyWidgets/my_text.dart';
-import 'package:eShoppie/MyWidgets/no_connection.dart';
-import 'package:eShoppie/MyWidgets/text_contatiner.dart';
-import 'package:eShoppie/Screens/UserLoginScreens/login.dart';
-import 'package:eShoppie/Shared/functions.dart';
-import 'package:eShoppie/Shared/shared_preference.dart';
-import 'package:eShoppie/constants.dart';
-import 'package:eShoppie/main.dart';
+import 'package:eshoppie/AppCubits/LoginScreenCubit/login_cubit.dart';
+import 'package:eshoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
+import 'package:eshoppie/AppCubits/UserHomeCubit/user_home_states.dart';
+import 'package:eshoppie/MyWidgets/fade_in_image.dart';
+import 'package:eshoppie/MyWidgets/my_text.dart';
+import 'package:eshoppie/MyWidgets/no_connection.dart';
+import 'package:eshoppie/MyWidgets/text_contatiner.dart';
+import 'package:eshoppie/Screens/UserLoginScreens/login.dart';
+import 'package:eshoppie/Shared/functions.dart';
+import 'package:eshoppie/Shared/shared_preference.dart';
+import 'package:eshoppie/constants.dart';
+import 'package:eshoppie/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:page_transition/page_transition.dart';
 
 class UserProfile extends StatelessWidget {
@@ -35,14 +36,27 @@ class Content extends StatelessWidget {
     return BlocProvider(
         create: (context) => UserHomeCubit()..getUserData(),
         child: BlocConsumer<UserHomeCubit, UserHomeStates>(
-          listener: (context, state) {},
+          listener: (context, state) {
+            if (state is ErrorSigningOutState) {
+              EasyLoading.dismiss();
+              showToastMessage('Could not signed you out ! ,Try again',
+                  color: K_blackColor, textColor: Colors.redAccent);
+            }
+            if (state is SignedOutState) {
+              EasyLoading.dismiss();
+              navigateToWithReplace(context, Login(),
+                  transition: PageTransitionType.leftToRight);
+            }
+          },
           builder: (context, state) {
-            return ConditionalBuilder(
-              condition: currentUserData != null || state is GotUserDataState,
-              fallback: (context) => K_progressIndicator,
-              builder: (context) => ConditionalBuilder(
-                condition: state is! ErrorUserDataState,
-                fallback: (context) => const NoConnectionState(),
+            return WillPopScope(
+              onWillPop: () => onPoping(),
+              child: ConditionalBuilder(
+                condition: currentUserData != null || state is GotUserDataState,
+                fallback: (context) => ConditionalBuilder(
+                    condition: state is! ErrorUserDataState,
+                    fallback: (context) => const NoConnectionState(),
+                    builder: (context) => K_progressIndicator),
                 builder: (context) => Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 15.0,
@@ -111,17 +125,10 @@ class Content extends StatelessWidget {
                         child: SizedBox(
                           width: deviceWidth,
                           child: RawMaterialButton(
-                            onPressed: () {
-                              SharedHandler.removeSharedPref(
-                                  SharedHandler.saveUserTokenKey);
-                              SharedHandler.removeSharedPref(
-                                  SharedHandler.saveLoginKey);
-                              currentUserData = null; //Delete current user data
-                              navigateToWithReplace(
-                                context,
-                                Login(),
-                                transition: PageTransitionType.rightToLeft,
-                              );
+                            onPressed: () async {
+                              EasyLoading.show(
+                                  maskType: EasyLoadingMaskType.black);
+                              await UserHomeCubit.get(context).signUserOut();
                             },
                             elevation: 0.0,
                             shape: RoundedRectangleBorder(

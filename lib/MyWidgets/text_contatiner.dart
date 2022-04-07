@@ -1,7 +1,7 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:eShoppie/AppCubits/LoginScreenCubit/login_cubit.dart';
-import 'package:eShoppie/MyWidgets/my_text.dart';
-import 'package:eShoppie/constants.dart';
+import 'package:eshoppie/AppCubits/LoginScreenCubit/login_cubit.dart';
+import 'package:eshoppie/MyWidgets/my_text.dart';
+import 'package:eshoppie/constants.dart';
 import 'package:flutter/material.dart';
 
 class TextContainer extends StatelessWidget {

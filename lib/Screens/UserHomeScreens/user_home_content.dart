@@ -1,13 +1,13 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:eShoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
-import 'package:eShoppie/AppCubits/UserHomeCubit/user_home_states.dart';
-import 'package:eShoppie/MyWidgets/categories_horizontal_list.dart';
-import 'package:eShoppie/MyWidgets/list_view_with_separator.dart';
-import 'package:eShoppie/MyWidgets/my_text.dart';
-import 'package:eShoppie/MyWidgets/no_connection.dart';
-import 'package:eShoppie/constants.dart';
-import 'package:eShoppie/main.dart';
+import 'package:eshoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
+import 'package:eshoppie/AppCubits/UserHomeCubit/user_home_states.dart';
+import 'package:eshoppie/MyWidgets/categories_horizontal_list.dart';
+import 'package:eshoppie/MyWidgets/list_view_with_separator.dart';
+import 'package:eshoppie/MyWidgets/my_text.dart';
+import 'package:eshoppie/MyWidgets/no_connection.dart';
+import 'package:eshoppie/constants.dart';
+import 'package:eshoppie/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,7 +41,7 @@ class UserHomeContent extends StatelessWidget {
                         children: [
                           Padding(
                             padding: const EdgeInsets.only(
-                                top: 120.0,
+                                top: 130.0,
                                 bottom: 5.0,
                                 left: 15.0,
                                 right: 15.0),
@@ -53,22 +53,35 @@ class UserHomeContent extends StatelessWidget {
                               ),
                             ),
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.stretch,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 15.0, bottom: 10.0),
-                                child: MyText(
-                                    text: 'eShoppie Collection',
-                                    size: K_fontSizeL + 7),
-                              ),
-                              K_vSpace10,
-                              CategoriesHorizontalList(
-                                cateList: userHomeCubit.categories,
-                                userHomeCubit: userHomeCubit,
-                              ),
-                            ],
+                          Container(
+                            width: double.infinity,
+                            height: 120.0,
+                            decoration: const BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                    color: Colors.black12,
+                                    blurRadius: 20.0,
+                                    offset: Offset(0, 10))
+                              ],
+                              color: K_whiteColor,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.stretch,
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      left: 15.0, bottom: 10.0),
+                                  child: MyText(
+                                      text: 'eShoppie Collection',
+                                      size: K_fontSizeL + 7),
+                                ),
+                                K_vSpace10,
+                                CategoriesHorizontalList(
+                                  cateList: userHomeCubit.categories,
+                                  userHomeCubit: userHomeCubit,
+                                ),
+                              ],
+                            ),
                           ),
                         ],
                       ),

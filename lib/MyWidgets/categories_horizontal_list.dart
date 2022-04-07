@@ -1,7 +1,7 @@
-import 'package:eShoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
-import 'package:eShoppie/Models/categories.dart';
-import 'package:eShoppie/MyWidgets/my_text.dart';
-import 'package:eShoppie/constants.dart';
+import 'package:eshoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
+import 'package:eshoppie/Models/categories.dart';
+import 'package:eshoppie/MyWidgets/my_text.dart';
+import 'package:eshoppie/constants.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesHorizontalList extends StatelessWidget {

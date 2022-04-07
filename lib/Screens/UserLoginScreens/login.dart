@@ -1,17 +1,17 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:eShoppie/AppCubits/LoginScreenCubit/login_cubit.dart';
-import 'package:eShoppie/AppCubits/LoginScreenCubit/login_states.dart';
-import 'package:eShoppie/MyWidgets/gradient_background.dart';
-import 'package:eShoppie/MyWidgets/my_button.dart';
-import 'package:eShoppie/MyWidgets/my_text.dart';
-import 'package:eShoppie/MyWidgets/my_text_field.dart';
-import 'package:eShoppie/MyWidgets/snack_bar.dart';
-import 'package:eShoppie/Screens/UserHomeScreens/user_home.dart';
-import 'package:eShoppie/Screens/UserLoginScreens/sign_up.dart';
-import 'package:eShoppie/Shared/functions.dart';
-import 'package:eShoppie/Shared/shared_preference.dart';
-import 'package:eShoppie/constants.dart';
-import 'package:eShoppie/main.dart';
+import 'package:eshoppie/AppCubits/LoginScreenCubit/login_cubit.dart';
+import 'package:eshoppie/AppCubits/LoginScreenCubit/login_states.dart';
+import 'package:eshoppie/MyWidgets/gradient_background.dart';
+import 'package:eshoppie/MyWidgets/my_button.dart';
+import 'package:eshoppie/MyWidgets/my_text.dart';
+import 'package:eshoppie/MyWidgets/my_text_field.dart';
+import 'package:eshoppie/MyWidgets/snack_bar.dart';
+import 'package:eshoppie/Screens/UserHomeScreens/user_home.dart';
+import 'package:eshoppie/Screens/UserLoginScreens/sign_up.dart';
+import 'package:eshoppie/Shared/functions.dart';
+import 'package:eshoppie/Shared/shared_preference.dart';
+import 'package:eshoppie/constants.dart';
+import 'package:eshoppie/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -50,13 +50,13 @@ class Login extends StatelessWidget {
                           children: [
                             K_vSpace20,
                             K_vSpace20,
-                            const Center(
-                              child: Icon(
-                                Icons.shopping_bag_outlined,
-                                color: K_blackColor,
-                                size: 90,
+                            Center(
+                              child: SizedBox(
+                                height: 100,
+                                child: K_logoImage,
                               ),
                             ),
+                            K_vSpace10,
                             Center(
                                 child: MyText(
                                     text: 'eShoppie', size: K_fontSizeL)),
@@ -123,7 +123,7 @@ class Login extends StatelessWidget {
 
   goToHomePageOrShowError(int resultOfLogin, context) async {
     if (resultOfLogin == 1) {
-      navigateToWithReplace(context, UserHome());
+      navigateToWithReplace(context, showHomePageOrGetAddressAfterLogin());
       await SharedHandler.setSharedPref(SharedHandler.saveLoginKey, true);
     } else if (resultOfLogin == 2) {
       showSnackBar(

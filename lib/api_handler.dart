@@ -16,6 +16,9 @@ class APIHandler {
   static String getProductMethod = 'products';
   static String getCategoryMethod = 'categories';
   static String toFavorites = 'favorites';
+  static String toCarts = 'carts';
+  static String orders = 'orders';
+  static String addresses = 'addresses';
   static String userProfile = 'profile';
   static String userLogout = 'logout';
   static String getSearchedProducts = 'products/search';

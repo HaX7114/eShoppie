@@ -1,4 +1,4 @@
-import 'package:eShoppie/constants.dart';
+import 'package:eshoppie/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 

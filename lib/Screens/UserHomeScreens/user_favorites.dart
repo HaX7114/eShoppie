@@ -1,11 +1,11 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
-import 'package:eShoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
-import 'package:eShoppie/AppCubits/UserHomeCubit/user_home_states.dart';
-import 'package:eShoppie/MyWidgets/list_view_with_separator.dart';
-import 'package:eShoppie/MyWidgets/my_text.dart';
-import 'package:eShoppie/MyWidgets/no_connection.dart';
-import 'package:eShoppie/MyWidgets/no_favorites.dart';
-import 'package:eShoppie/constants.dart';
+import 'package:eshoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
+import 'package:eshoppie/AppCubits/UserHomeCubit/user_home_states.dart';
+import 'package:eshoppie/MyWidgets/list_view_with_separator.dart';
+import 'package:eshoppie/MyWidgets/my_text.dart';
+import 'package:eshoppie/MyWidgets/no_connection.dart';
+import 'package:eshoppie/MyWidgets/no_favorites.dart';
+import 'package:eshoppie/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

@@ -7,6 +7,7 @@ class Product {
   dynamic images;
   dynamic inFavorites;
   dynamic inCart;
+  dynamic qty;
 
   Product(
       {this.id,
@@ -16,10 +17,11 @@ class Product {
       this.images,
       this.inCart,
       this.inFavorites,
-      this.price});
+      this.price,
+      this.qty});
 
   Product.fromJson(List<dynamic> data, List<Product> products) {
-    data.forEach((element) {
+    for (var element in data) {
       products.add(Product(
         id: element['id'],
         description: element['description'],
@@ -30,11 +32,23 @@ class Product {
         name: element['name'],
         price: element['price'],
       ));
-    });
+    }
+  }
+
+  Product.fromProductDetails(List<dynamic> data, List<Product> products) {
+    for (var element in data) {
+      products.add(Product(
+        id: element['id'],
+        image: element['image'],
+        qty: element['quantity'],
+        name: element['name'],
+        price: element['price'],
+      ));
+    }
   }
 
   Product.fromFavorites(List<dynamic> data, List<Product> products) {
-    data.forEach((element) {
+    for (var element in data) {
       if (element['in_favorites']) {
         products.add(Product(
           id: element['id'],
@@ -47,6 +61,23 @@ class Product {
           price: element['price'],
         ));
       }
-    });
+    }
+  }
+
+  Product.fromCarts(List<dynamic> data, List<Product> products) {
+    for (var element in data) {
+      if (element['in_cart']) {
+        products.add(Product(
+          id: element['id'],
+          description: element['description'],
+          image: element['image'],
+          images: element['images'],
+          inCart: element['in_cart'],
+          inFavorites: element['in_favorites'],
+          name: element['name'],
+          price: element['price'],
+        ));
+      }
+    }
   }
 }

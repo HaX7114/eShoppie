@@ -1,7 +1,7 @@
-abstract class ProductDetailsStates{}
+abstract class ProductDetailsStates {}
 
-class ProductDetailsInitialState extends ProductDetailsStates{}
+class ProductDetailsInitialState extends ProductDetailsStates {}
 
-class IncreaseProductAmountState extends ProductDetailsStates{}
+class AddingProductToCartState extends ProductDetailsStates {}
 
-class DecreaseProductAmountState extends ProductDetailsStates{}
+class ErrorAddingProductToCartState extends ProductDetailsStates {}

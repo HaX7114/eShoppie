@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 class Category {
   dynamic categoryID;
   dynamic categoryName;
@@ -8,12 +6,12 @@ class Category {
   Category({this.categoryID, this.categoryName, this.categoryImage});
 
   Category.fromJson(List data, List<Category> categoriesList) {
-    data.forEach((element) {
+    for (var element in data) {
       categoriesList.add(Category(
         categoryID: element['id'],
         categoryName: element['name'],
         categoryImage: element['image'],
       ));
-    });
+    }
   }
 }

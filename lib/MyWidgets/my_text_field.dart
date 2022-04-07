@@ -1,5 +1,5 @@
-import 'package:eShoppie/constants.dart';
-import 'package:eShoppie/main.dart';
+import 'package:eshoppie/constants.dart';
+import 'package:eshoppie/main.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -48,7 +48,7 @@ class MyTextField extends StatelessWidget {
       maxLength: maxlength,
       validator: (value) {
         if (isEmailField) {
-          if (!EmailValidator.validate(value!) && value.isNotEmpty) {
+          if (!EmailValidator.validate(value!.trim()) && value.isNotEmpty) {
             return 'Email is invalid!';
           } else if (value == null || value.isEmpty) {
             return validatorText;

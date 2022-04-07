@@ -1,6 +1,6 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:eShoppie/MyWidgets/my_text.dart';
-import 'package:eShoppie/constants.dart';
+import 'package:eshoppie/MyWidgets/my_text.dart';
+import 'package:eshoppie/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,11 @@ class NoConnectionState extends StatelessWidget {
             ),
             K_vSpace20,
             K_vSpace20,
-            MyText(text: 'No internet connection !', size: K_fontSizeL),
+            MyText(
+              text: 'No internet connection !',
+              size: K_fontSizeL,
+              fontWeight: FontWeight.normal,
+            ),
           ],
         ),
       ),

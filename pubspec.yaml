@@ -1,4 +1,4 @@
-name: eShoppie
+name: eshoppie
 description: A new Flutter project.
 
 # The following line prevents the package from being accidentally published to
@@ -19,23 +19,28 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^2.1.0
+  google_fonts: 2.1.0
   smooth_page_indicator: ^1.0.0+2
-  page_transition: ^2.0.4
-  intl_phone_field: ^2.1.0
-  phone_form_field: ^4.3.1
-  email_validator: ^2.0.1
-  password_strength: ^0.2.0
-  dio: ^4.0.3
-  flutter_bloc: ^7.3.1
-  bloc: ^7.2.1
-  conditional_builder_null_safety: ^0.0.6
-  ionicons: ^0.1.2
-  lottie: ^1.2.1
-  animate_do: ^2.0.0
-  shared_preferences: ^2.0.9
-  timer_builder: ^2.0.0
-  flutter_countdown_timer: ^4.1.0
+  page_transition: 2.0.4
+  intl_phone_field: 2.1.0
+  phone_form_field: 4.3.1
+  email_validator: 2.0.1
+  password_strength: 0.2.0
+  dio: 4.0.3
+  flutter_bloc: 7.3.1
+  bloc: 7.2.1
+  conditional_builder_null_safety: 0.0.6
+  ionicons: 0.1.2
+  lottie: 1.2.1
+  animate_do: 2.0.0
+  shared_preferences: 2.0.9
+  fluttertoast: 8.0.8
+  geolocator: 8.0.3
+  image_picker: ^0.8.4+1
+  geocode: 1.0.1
+  device_preview: 1.0.0
+  responsive_sizer: ^3.0.5+1
+  flutter_easyloading: 3.0.3
 
 
   # The following adds the Cupertino Icons font to your application.

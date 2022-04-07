@@ -7,6 +7,21 @@ class SharedHandler {
 
   static String saveLoginKey = 'SavedLogin';
 
+  static String saveCityKey = 'saveCityKey';
+
+  static String saveAddressIDKey = 'saveAddressIDKey';
+
+  static String saveLatKey = 'saveLatKey';
+
+  static String saveLngKey = 'saveLngKey';
+
+  static String saveRegionKey = 'saveRegionKey';
+
+  static String saveStreetKey = 'saveStreetKey';
+
+  static String saveSetAddressKey =
+      'SavedAddress'; //If saved this means that the user has signed up but not set his additional info like address
+
   static String saveUserTokenKey = 'Token';
 
   static initSharedPref() async {

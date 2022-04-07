@@ -1,15 +1,15 @@
-import 'package:eShoppie/constants.dart';
-import 'package:eShoppie/main.dart';
+import 'package:eshoppie/constants.dart';
+import 'package:eshoppie/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:phone_form_field/phone_form_field.dart';
 
-
 class PhoneTextField extends StatelessWidget {
   const PhoneTextField({Key? key}) : super(key: key);
 
-  static bool checkPhoneNumberIsTrue = false; //used in form field to make sure that this number is valid
+  static bool checkPhoneNumberIsTrue =
+      false; //used in form field to make sure that this number is valid
   static String? getPhoneNumberValue; //used in form field to get the value
   @override
   Widget build(BuildContext context) {
@@ -17,16 +17,14 @@ class PhoneTextField extends StatelessWidget {
       validator: (value) {
         if (value == null) {
           return 'Phone number can not be empty!';
-        }
-        else if(!value.validateLength(type: PhoneNumberType.mobile)){
+        } else if (!value.validateLength(type: PhoneNumberType.mobile)) {
           checkPhoneNumberIsTrue = false;
           return 'Invalid phone number!';
-        }
-        else{
+        } else {
           checkPhoneNumberIsTrue = true;
         }
       },
-      onSaved: (value){
+      onSaved: (value) {
         getPhoneNumberValue = value!.getFormattedNsn();
       },
       selectorNavigator: ModalBottomSheetNavigator(height: deviceHeight! * 0.7),

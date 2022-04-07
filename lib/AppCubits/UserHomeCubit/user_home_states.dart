@@ -8,6 +8,20 @@ class ChangeNavBarState extends UserHomeStates {}
 
 class ChangeLikeButtonState extends UserHomeStates {}
 
+//Cart button state
+
+class ChangeCartButtonState extends UserHomeStates {}
+
+//Added to cart
+
+class AddedToCartState extends UserHomeStates {}
+
+//Error while adding to cart
+
+class NoCartsState extends UserHomeStates {}
+
+class ErrorWhileAddingToCart extends UserHomeStates {}
+
 //User getting profile states
 
 class GotUserDataState extends UserHomeStates {}
@@ -43,3 +57,11 @@ class GotCategoriesState extends UserHomeStates {}
 class GotCategoriesLoadingState extends UserHomeStates {}
 
 class GotCategoriesErrorState extends UserHomeStates {}
+
+//Signing out
+
+class SigningOutState extends UserHomeStates {}
+
+class SignedOutState extends UserHomeStates {}
+
+class ErrorSigningOutState extends UserHomeStates {}

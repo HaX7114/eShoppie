@@ -1,10 +1,11 @@
-import 'package:eShoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
-import 'package:eShoppie/Models/product.dart';
-import 'package:eShoppie/MyWidgets/fade_in_image.dart';
-import 'package:eShoppie/MyWidgets/like_button.dart';
-import 'package:eShoppie/MyWidgets/my_text.dart';
-import 'package:eShoppie/constants.dart';
-import 'package:eShoppie/main.dart';
+import 'package:eshoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
+import 'package:eshoppie/Models/product.dart';
+import 'package:eshoppie/MyWidgets/cart_button.dart';
+import 'package:eshoppie/MyWidgets/fade_in_image.dart';
+import 'package:eshoppie/MyWidgets/like_button.dart';
+import 'package:eshoppie/MyWidgets/my_text.dart';
+import 'package:eshoppie/constants.dart';
+import 'package:eshoppie/main.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -42,14 +43,11 @@ class ProductContainer extends StatelessWidget {
                   child: Column(
                     children: [
                       Expanded(
-                        child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(
-                            CupertinoIcons.cart,
-                            color: K_whiteColor,
-                          ),
-                        ),
-                      ),
+                          child: CartButton(
+                              isCartProduct: product.inCart,
+                              color: K_whiteColor,
+                              productIndex: productIndex,
+                              products: products)),
                       Container(
                         margin: const EdgeInsets.symmetric(horizontal: 10.0),
                         color: K_greyColor,

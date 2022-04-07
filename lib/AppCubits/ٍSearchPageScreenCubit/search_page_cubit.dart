@@ -1,6 +1,6 @@
-import 'package:eShoppie/AppCubits/%D9%8DSearchPageScreenCubit/search_page_states.dart';
-import 'package:eShoppie/Models/product.dart';
-import 'package:eShoppie/api_handler.dart';
+import 'package:eshoppie/AppCubits/%D9%8DSearchPageScreenCubit/search_page_states.dart';
+import 'package:eshoppie/Models/product.dart';
+import 'package:eshoppie/api_handler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SearchPageCubit extends Cubit<SearchPageStates> {

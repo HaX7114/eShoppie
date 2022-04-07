@@ -1,13 +1,16 @@
-import 'package:eShoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
-import 'package:eShoppie/Screens/UserLoginScreens/login.dart';
-import 'package:eShoppie/Screens/UserLoginScreens/on_boarding.dart';
-import 'package:eShoppie/Shared/functions.dart';
-import 'package:eShoppie/Shared/shared_preference.dart';
-import 'package:eShoppie/api_handler.dart';
+import 'package:eshoppie/AppCubits/UserHomeCubit/user_home_cubit.dart';
+import 'package:eshoppie/Screens/UserLoginScreens/login.dart';
+import 'package:eshoppie/Screens/UserLoginScreens/on_boarding.dart';
+import 'package:eshoppie/Shared/functions.dart';
+import 'package:eshoppie/Shared/shared_preference.dart';
+import 'package:eshoppie/api_handler.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'AppCubits/block_observer.dart';
 import 'MyWidgets/my_theme_data.dart';
+import 'package:device_preview/device_preview.dart';
+import 'package:responsive_sizer/responsive_sizer.dart';
 
 double? deviceHeight; //Gets the device height via media query
 double? deviceWidth; //Gets the device width via media query
@@ -26,7 +29,28 @@ void main() async {
           .toString());
   Bloc.observer = MyBlocObserver();
 
-  runApp(const MyApp());
+  print(SharedHandler.getSharedPref(SharedHandler.saveUserTokenKey));
+
+  runApp(
+    const MyApp(),
+  );
+  configLoading();
+}
+
+void configLoading() {
+  EasyLoading.instance
+    ..displayDuration = const Duration(milliseconds: 2000)
+    ..indicatorType = EasyLoadingIndicatorType.fadingCircle
+    ..loadingStyle = EasyLoadingStyle.dark
+    ..indicatorSize = 45.0
+    ..radius = 10.0
+    ..progressColor = Colors.yellow
+    ..backgroundColor = Colors.green
+    ..indicatorColor = Colors.yellow
+    ..textColor = Colors.yellow
+    ..maskColor = Colors.blue.withOpacity(0.5)
+    ..userInteractions = false
+    ..dismissOnTap = false;
 }
 
 class MyApp extends StatelessWidget {
@@ -36,6 +60,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      builder: EasyLoading.init(),
       title: 'eShoppie',
       debugShowCheckedModeBanner: false,
       theme: myThemeData(),

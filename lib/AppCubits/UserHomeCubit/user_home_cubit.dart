@@ -1,13 +1,16 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
-import 'package:eShoppie/AppCubits/LoginScreenCubit/login_cubit.dart';
-import 'package:eShoppie/AppCubits/UserHomeCubit/user_home_states.dart';
-import 'package:eShoppie/Models/categories.dart';
-import 'package:eShoppie/Models/product.dart';
-import 'package:eShoppie/Models/user.dart';
-import 'package:eShoppie/Shared/shared_preference.dart';
-import 'package:eShoppie/main.dart';
+import 'package:eshoppie/AppCubits/LoginScreenCubit/login_cubit.dart';
+import 'package:eshoppie/AppCubits/UserHomeCubit/user_home_states.dart';
+import 'package:eshoppie/Models/address.dart';
+import 'package:eshoppie/Models/cart.dart';
+import 'package:eshoppie/Models/categories.dart';
+import 'package:eshoppie/Models/product.dart';
+import 'package:eshoppie/Models/user.dart';
+import 'package:eshoppie/Shared/shared_preference.dart';
+import 'package:eshoppie/main.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../api_handler.dart';
 
@@ -22,6 +25,21 @@ class UserHomeCubit extends Cubit<UserHomeStates> {
   changeNavBarIndex(newIndex) {
     currentIndex = newIndex;
     emit(ChangeNavBarState());
+  }
+
+  //Delete user address after sign out
+  signUserOut() async {
+    bool result = false;
+    emit(SigningOutState());
+    dynamic addressID =
+        SharedHandler.getSharedPref(SharedHandler.saveAddressIDKey);
+    result = await UserAddress.deleteAddress(addressID);
+    if (result) {
+      currentUserData = null; //Delete current user data
+      emit(SignedOutState());
+    } else {
+      emit(ErrorSigningOutState());
+    }
   }
 
   //Get user data
@@ -61,13 +79,33 @@ class UserHomeCubit extends Cubit<UserHomeStates> {
     });
   }
 
+  //Product in carts
+  getCartsProducts() async {
+    emit(GotProductsLoadingState());
+    await APIHandler.dio!
+        .get(
+      APIHandler.getProductMethod,
+    )
+        .then((value) {
+      products.clear();
+      Product.fromCarts(value.data['data']['data'], products);
+      if (products.isNotEmpty) {
+        emit(GotProductsState());
+      } else {
+        emit(NoCartsState());
+      }
+    }).catchError((error) {
+      emit(GotProductsErrorState());
+      //No response error 404
+    });
+  }
+
   //Like button product state
   bool isLikedProduct = false;
 
   changeLikeButtonState(bool isFavoriteProduct) {
     isLikedProduct = !isFavoriteProduct;
     emit(ChangeLikeButtonState());
-    //update the backend will be here
   }
 
   addToFavorites(dynamic productID) async {
@@ -81,6 +119,25 @@ class UserHomeCubit extends Cubit<UserHomeStates> {
         emit(ErrorWhileAddingToFav());
       }
     });
+  }
+
+  //Cart button product state
+  bool isInCartProduct = false;
+
+  changeCartButtonState(bool isCartProduct) {
+    isInCartProduct = !isCartProduct;
+    emit(ChangeCartButtonState());
+  }
+
+  addToCart(dynamic productID) async {
+    bool status = false;
+    await Cart.addToCart(productID, status);
+    // ignore: dead_code
+    if (status) {
+      emit(AddedToCartState());
+    } else {
+      emit(ErrorWhileAddingToCart());
+    }
   }
 
   //Getting products function

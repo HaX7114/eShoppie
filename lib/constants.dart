@@ -1,11 +1,22 @@
 import 'package:flutter/material.dart';
 
+//LogoImage
+dynamic K_logoImage = Image.asset(
+  'images/logo.png',
+  height: 70.0,
+);
+
+//PaymentMethods
+const int cashPayment = 1;
+const int cardPayment = 2;
+
 //Colors
 const Color K_whiteColor = Color(0XFFFFFFFF);
 const Color K_blackColor = Color(0XFF000000);
 const Color K_offWhiteColor = Color(0XFFF8F9FF);
 const Color K_transparentColor = Colors.transparent;
 const Color K_greyColor = Colors.white30;
+const Color K_goldColor = Color(0xFFceb669);
 
 //Spaces
 const SizedBox K_hSpace10 = SizedBox(
